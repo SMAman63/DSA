@@ -21,6 +21,19 @@
 # Input: nums = [-1,1,0,-3,3]
 # Output: [0,0,9,0,0]
 
-
+nums = [1,2,3,4]
+l=[]
+mul=1
+for i in range(0,len(nums)):
+    mul=1
+    for j in range(0,len(nums)):
+        if j==i:
+            print(i,j)
+            continue
+        print("mul",mul,nums[j])
+        mul=mul*nums[j]
+    print("append",mul)
+    l.append(mul)
+print(l)    
  
 
