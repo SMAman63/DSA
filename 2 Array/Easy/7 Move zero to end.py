@@ -1,13 +1,26 @@
 # remaining
-# arr = input("enter nos.")
-# arr=list(map(int,i.split(",")))
-# print(arr)
-
-# i=0
-# j=0
-
-# while(i<len(arr)):
-#     if arr[j]==0 and arr[i]==0:
+arr = input("enter nos.")
+arr=list(map(int,arr.split(",")))
+print(arr)
 
 
-#     i+=1
+def moveback(n,a):
+    j=-1
+    for i in range(n):
+        if a[i]==0:
+            j=i
+            break
+
+    if j==-1:
+        return a
+    for i in range(j+1,n):
+        if a[i] != 0:
+            a[i],a[j]=a[j],a[i]
+            j+=1
+        
+    return a
+
+
+n=len(arr)
+x = moveback(n,arr)
+print(x)
