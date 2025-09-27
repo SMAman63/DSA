@@ -1,10 +1,11 @@
 # # Input Format: 
 # n = 5 
-# k = 5
+# k = 10
 # arr = [2,3,5]
+# arr = [1,10,2,3,5,8]
 
-# arr.sort()
-# print(arr)
+# # arr.sort()
+# # print(arr)
 
 # i=0
 # sum=0
@@ -29,35 +30,53 @@
 
 
 
-from typing import List
+# from typing import List
 
-def getLongestSubarray(a: [int], k: int) -> int:
-    n = len(a) # size of the array.
+# def getLongestSubarray(a: [int], k: int) -> int:
+#     n = len(a) # size of the array.
 
-    left, right = 0, 0 # 2 pointers
-    Sum = a[0]
-    maxLen = 0
-    while right < n:
-        # if sum > k, reduce the subarray from left
-        # until sum becomes less or equal to k:
-        while left <= right and Sum > k:
-            Sum -= a[left]
-            left += 1
+#     left, right = 0, 0 # 2 pointers
+#     Sum = a[0]
+#     maxLen = 0
+#     while right < n:
+#         # if sum > k, reduce the subarray from left
+#         # until sum becomes less or equal to k:
+#         while left <= right and Sum > k:
+#             Sum -= a[left]
+#             left += 1
 
-        # if sum = k, update the maxLen i.e. answer:
-        if Sum == k:
-            maxLen = max(maxLen, right - left + 1)
+#         # if sum = k, update the maxLen i.e. answer:
+#         if Sum == k:
+#             maxLen = max(maxLen, right - left + 1)
 
-        # Move forward the right pointer:
-        right += 1
-        if right < n: Sum += a[right]
+#         # Move forward the right pointer:
+#         right += 1
+#         if right < n: Sum += a[right]
 
-    return maxLen
+#     return maxLen
 
 
-if __name__ == "__main__":
-	a = [2, 3, 5, 1, 9]
-	k = 10
+# if __name__ == "__main__":
+# 	a = [2, 3, 5, 1, 9]
+# 	k = 10
 
-	length = getLongestSubarray(a, k)
-	print(f"The length of the longest subarray is: {length}")
+# 	length = getLongestSubarray(a, k)
+# 	print(f"The length of the longest subarray is: {length}")
+
+
+arr=[2, 3, 5, 1,2,2,5, 9]
+k=10
+i=0
+j=0
+sum=0
+maxLen=0
+while (j < len(arr)):
+    sum+=arr[j]
+    if sum==k:
+        length = j-i+1
+        maxLen = max(length,maxLen)
+    while sum>k:
+        sum = sum - arr[i]
+        i+=1
+    j+=1
+print(maxLen)
